@@ -24,3 +24,8 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
+# JWT Configuration
+jwt:
+  secret: ev-charging-station-management-system-secret-key-2024-very-secure
+  expiration: 86400000 # 24 hours in milliseconds
+
