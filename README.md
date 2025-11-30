@@ -1,79 +1,79 @@
 # EV-Charging-Station-Management-System---Project
-# 🚗 EV Charging Station Management System
+# 🚗 Hệ Thống Quản Lý Trạm Sạc Xe Điện
 
-## 🎯 1. Project Goals
-Build an **EV Charging Station Management System** using a **microservices architecture**.  
-The system serves 3 main user groups:
+## 🎯 1. Mục Tiêu Dự Án
+Xây dựng **Hệ Thống Quản Lý Trạm Sạc Xe Điện** sử dụng **kiến trúc microservices**.  
+Hệ thống phục vụ 3 nhóm người dùng chính:
 
-- **EV Driver**: find stations, make reservations, start/end charging sessions, process payments, view personal reports.  
-- **Charging Station Staff**: monitor charging points, handle on-site payments.  
-- **Admin**: manage stations/charging points, users, service packages, reports & revenue statistics.  
-
----
-
-## 👥 2. Team
-**Team size**: 4–5 students (if >5 → split into separate projects).  
-
-**Roles:**
-- **Backend Lead**: Authentication, User Service, Station Service  
-- **Backend Developer**: Charging Session Service, Payment Service  
-- **Frontend Lead**: Driver & Staff UIs  
-- **Frontend/DevOps**: Admin UI, Docker, CI/CD  
-- **(Optional) QA/Tester**: test cases & system testing  
+- **Tài Xế Xe Điện**: tìm trạm sạc, đặt chỗ, bắt đầu/kết thúc phiên sạc, thanh toán, xem báo cáo cá nhân.  
+- **Nhân Viên Trạm Sạc**: giám sát điểm sạc, xử lý thanh toán tại chỗ.  
+- **Quản Trị Viên**: quản lý trạm sạc/điểm sạc, người dùng, gói dịch vụ, báo cáo & thống kê doanh thu.  
 
 ---
 
-## 📦 3. Scope
+## 👥 2. Đội Nhóm
+**Quy mô đội**: 4–5 sinh viên (nếu >5 → chia thành các dự án riêng biệt).  
 
-### ✅ Included (MVP – 8 weeks)
-- Authentication & Authorization (JWT, role-based access control)  
-- **Driver App**: station search, reservation, start/end charging, payments  
-- **Staff App**: session management, on-site payment confirmation  
-- **Admin Portal**: station/point management, users, service packages, reporting  
-- **Payment**: VNPay/MoMo sandbox integration + demo e-wallet  
-- **Reporting & Analytics**: personal and system-level  
-- Deployment with **Docker Compose**  
-
-### ❌ Out of Scope (future phases)
-- Real hardware integration (charger IoT)  
-- AI for demand prediction & station upgrade recommendations  
-- Deployment with **Kubernetes**  
+**Vai trò:**
+- **Trưởng Nhóm Backend**: Xác thực, Dịch vụ Người dùng, Dịch vụ Trạm sạc  
+- **Lập Trình Viên Backend**: Dịch vụ Phiên Sạc, Dịch vụ Thanh toán  
+- **Trưởng Nhóm Frontend**: Giao diện Tài xế & Nhân viên  
+- **Frontend/DevOps**: Giao diện Quản trị, Docker, CI/CD  
+- **(Tùy chọn) QA/Tester**: test cases & kiểm thử hệ thống  
 
 ---
 
-## ⚙️ 4. Technology Stack
-- **Backend**: Java (Spring Boot), mySQL  
-- **Frontend**: ReactJS (responsive web)  
-- **Architecture**: Microservices  
-- **Deployment**: Docker, Docker Compose  
-- **Payments**: VNPay/MoMo sandbox  
-- **Maps**: Google Maps API  
-- **Version Control**: GitHub  
-- **Project Management**: Jira  
-- **Documentation**: Confluence  
+## 📦 3. Phạm Vi Dự Án
+
+### ✅ Bao Gồm (MVP – 8 tuần)
+- Xác thực & Phân quyền (JWT, điều khiển truy cập theo vai trò)  
+- **Ứng dụng Tài xế**: tìm kiếm trạm, đặt chỗ, bắt đầu/kết thúc sạc, thanh toán  
+- **Ứng dụng Nhân viên**: quản lý phiên sạc, xác nhận thanh toán tại chỗ  
+- **Cổng Quản trị**: quản lý trạm/điểm sạc, người dùng, gói dịch vụ, báo cáo  
+- **Thanh toán**: Tích hợp VNPay/MoMo sandbox + ví điện tử demo  
+- **Báo cáo & Phân tích**: cấp độ cá nhân và hệ thống  
+- Triển khai với **Docker Compose**  
+
+### ❌ Ngoài Phạm Vi (giai đoạn tương lai)
+- Tích hợp phần cứng thực tế (thiết bị IoT sạc)  
+- AI dự đoán nhu cầu & đề xuất nâng cấp trạm  
+- Triển khai với **Kubernetes**  
 
 ---
 
-## 📅 5. Timeline (8 weeks, ≥400h)
-- **Week 1–2**: Requirement analysis, design, setup, Auth & User Service  
-- **Week 3–4**: Station Service, Charging Session Service, Payment Service  
-- **Week 5–6**: Frontend UIs (Driver, Staff, Admin)  
-- **Week 7**: System integration & testing  
-- **Week 8**: Demo, report, final delivery  
+## ⚙️ 4. Công Nghệ Sử Dụng
+- **Backend**: Java (Spring Boot), MySQL  
+- **Frontend**: ReactJS (web responsive)  
+- **Kiến trúc**: Microservices  
+- **Triển khai**: Docker, Docker Compose  
+- **Thanh toán**: VNPay/MoMo sandbox  
+- **Bản đồ**: Google Maps API  
+- **Quản lý Phiên bản**: GitHub  
+- **Quản lý Dự án**: Jira  
+- **Tài liệu**: Confluence  
 
 ---
 
-## 📊 6. Deliverables
-- A working **MVP system** deployed via Docker Compose  
-- **Documentation (Confluence)**:  
-  - Project Overview  
-  - Requirements & Use Cases  
-  - System Architecture & ERD  
-  - API Documentation  
-  - DevOps & Deployment Guide  
-  - Meeting Notes & Sprint Reports  
-- **Codebase** on GitHub with CI/CD pipelines  
-- **Jira**: sprint backlog & reports  
-- **Demo & Presentation Slides**  
+## 📅 5. Lộ Trình (8 tuần, ≥400 giờ)
+- **Tuần 1–2**: Phân tích yêu cầu, thiết kế, thiết lập, Dịch vụ Xác thực & Người dùng  
+- **Tuần 3–4**: Dịch vụ Trạm sạc, Dịch vụ Phiên Sạc, Dịch vụ Thanh toán  
+- **Tuần 5–6**: Giao diện Frontend (Tài xế, Nhân viên, Quản trị)  
+- **Tuần 7**: Tích hợp hệ thống & kiểm thử  
+- **Tuần 8**: Demo, báo cáo, giao nộp cuối cùng  
+
+---
+
+## 📊 6. Sản Phẩm Giao Nộp
+- **Hệ thống MVP** hoạt động được triển khai qua Docker Compose  
+- **Tài liệu (Confluence)**:  
+  - Tổng quan Dự án  
+  - Yêu cầu & Use Cases  
+  - Kiến trúc Hệ thống & ERD  
+  - Tài liệu API  
+  - Hướng dẫn DevOps & Triển khai  
+  - Ghi chú Cuộc họp & Báo cáo Sprint  
+- **Codebase** trên GitHub với các pipeline CI/CD  
+- **Jira**: sprint backlog & báo cáo  
+- **Demo & Slide Thuyết trình**  
 
 ---
