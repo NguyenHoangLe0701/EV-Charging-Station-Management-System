@@ -43,6 +43,20 @@ config.json
 *.secret
 *.private
 
+# Application Properties với credentials (giữ template, ignore giá trị thực)
+# Lưu ý: Nếu muốn commit template, đổi tên file thành application.yml.template
+**/application-local.yml
+**/application-prod.yml
+**/application-dev.yml
+**/*-local.properties
+**/*-prod.properties
+**/*-dev.properties
+
+# MySQL credentials trong code
+**/database.properties
+**/db.properties
+**/dbconfig.properties
+
 # ============================================
 # IDE & Editor Files
 # ============================================
@@ -155,10 +169,15 @@ temp/
 *.db-journal
 
 # ============================================
-# Java/Maven (if backend exists)
+# Java/Maven
 # ============================================
-# Maven
-target/
+# Maven - Build output và cache
+**/target/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.nar
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -168,6 +187,10 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/maven-wrapper.jar
 
 # Gradle
 .gradle/
@@ -205,4 +228,33 @@ docker-compose.override.yml
 .vercel.json
 .turbo
 .fleet
+
+# ============================================
+# Backend Specific
+# ============================================
+# Spring Boot
+**/HELP.md
+**/.springBeans
+
+# Spring Cloud Config - Ignore actual config values, keep templates
+# Lưu ý: Chỉ ignore các file config có credentials thực tế
+**/config-repo/**/*.yml
+!**/config-repo/README.md
+!**/config-repo/.gitkeep
+
+# ============================================
+# Security - Never Commit These
+# ============================================
+**/private_key*
+**/public_key*
+**/keystore*
+**/truststore*
+**/*.pfx
+**/*.cer
+**/application-secret.yml
+**/application-secret.properties
+**/secrets.yml
+**/secrets.properties
+**/*-credentials.*
+**/*-secret.*
 
