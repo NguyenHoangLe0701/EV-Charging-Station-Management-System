@@ -13,9 +13,6 @@ import FindStationPage from '../pages/FindStationPage';
 import Dashboard from '../components/Dashboard';
 import AdminLayout from '../components/admin/AdminLayout';
 
-// SỬA ĐÚNG ĐƯỜNG DẪN
-import DashboardContent from '../components/admin/DashboardContent';
-
 import PricingPage from '../pages/PricingPage';
 import AdminPage from '../pages/AdminPage';
 import PaymentPage from '../pages/PaymentPage';
