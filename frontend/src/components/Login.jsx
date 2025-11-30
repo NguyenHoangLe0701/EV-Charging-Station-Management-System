@@ -1,6 +1,7 @@
 // src/components/Login.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import authService from '../api/authService';
 import '../styles/Auth.css';
 
 const Login = () => {
@@ -8,35 +9,54 @@ const Login = () => {
     email: '',
     password: ''
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(''); // Clear error when user types
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Đăng nhập:', formData);
-    
-    // Mock admin login - Kiểm tra credentials
-    const adminCredentials = {
-      email: 'admin@evcharge.vn',
-      password: '12345'
-    };
-    
-    if (formData.email === adminCredentials.email && formData.password === adminCredentials.password) {
-      // Lưu thông tin admin vào localStorage
-      localStorage.setItem('isAdmin', 'true');
-      localStorage.setItem('user', JSON.stringify({ 
-        email: adminCredentials.email, 
-        role: 'admin',
-        name: 'Quản trị viên'
-      }));
-      navigate('/admin');
-    } else {
-      // Đăng nhập user thông thường
-      localStorage.setItem('isAdmin', 'false');
-      navigate('/driver/profile');
+    setError('');
+    setLoading(true);
+
+    try {
+      // Gọi API đăng nhập từ backend
+      const response = await authService.login({
+        email: formData.email,
+        password: formData.password
+      });
+
+      if (response.success && response.data) {
+        const { token, userId, email, fullName, role } = response.data;
+        
+        // Lưu token và thông tin user vào localStorage
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('user', JSON.stringify({
+          userId,
+          email,
+          fullName,
+          role: role.toLowerCase()
+        }));
+        localStorage.setItem('isAdmin', role === 'ADMIN' ? 'true' : 'false');
+
+        // Redirect dựa trên role
+        if (role === 'ADMIN') {
+          navigate('/admin');
+        } else {
+          navigate('/driver/profile');
+        }
+      }
+    } catch (err) {
+      // Xử lý lỗi từ API
+      const errorMessage = err?.message || err?.data?.message || 'Đăng nhập thất bại. Vui lòng thử lại!';
+      setError(errorMessage);
+      console.error('Login error:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -77,8 +97,26 @@ const Login = () => {
               />
             </div>
 
-            <button type="submit" className="auth-btn-login">
-              Đăng nhập
+            {error && (
+              <div className="auth-error-message" style={{
+                color: '#ef4444',
+                backgroundColor: '#fee2e2',
+                padding: '0.75rem',
+                borderRadius: '8px',
+                marginBottom: '1rem',
+                fontSize: '0.875rem'
+              }}>
+                {error}
+              </div>
+            )}
+
+            <button 
+              type="submit" 
+              className="auth-btn-login"
+              disabled={loading}
+              style={{ opacity: loading ? 0.6 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
+            >
+              {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
             </button>
 
             <p className="auth-login-link">
