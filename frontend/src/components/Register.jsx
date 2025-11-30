@@ -1,6 +1,7 @@
 // src/components/Register.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import authService from '../api/authService';
 import '../styles/Auth.css';
 
 const Register = () => {
@@ -8,20 +9,72 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    phoneNumber: ''
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    // Validation
     if (formData.password !== formData.confirmPassword) {
-      alert('Mật khẩu không khớp!');
+      setError('Mật khẩu không khớp!');
       return;
     }
-    console.log('Đăng ký:', formData);
+
+    if (formData.password.length < 6) {
+      setError('Mật khẩu phải có ít nhất 6 ký tự!');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Gọi API đăng ký từ backend
+      const response = await authService.register({
+        email: formData.email,
+        password: formData.password,
+        fullName: formData.name,
+        phoneNumber: formData.phoneNumber || undefined
+      });
+
+      if (response.success && response.data) {
+        const { token, userId, email, fullName, role } = response.data;
+        
+        // Lưu token và thông tin user vào localStorage
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('user', JSON.stringify({
+          userId,
+          email,
+          fullName,
+          role: role.toLowerCase()
+        }));
+        localStorage.setItem('isAdmin', role === 'ADMIN' ? 'true' : 'false');
+
+        // Redirect đến trang phù hợp
+        if (role === 'ADMIN') {
+          navigate('/admin');
+        } else {
+          navigate('/driver/profile');
+        }
+      }
+    } catch (err) {
+      // Xử lý lỗi từ API
+      const errorMessage = err?.message || err?.data?.message || 'Đăng ký thất bại. Vui lòng thử lại!';
+      setError(errorMessage);
+      console.error('Register error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +96,7 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Tên quản trị viên trạm sạc"
+                placeholder="Họ và tên"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -55,10 +108,21 @@ const Register = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="admin@evstation.com"
+                placeholder="Email của bạn"
                 value={formData.email}
                 onChange={handleChange}
                 required
+              />
+            </div>
+
+            <div className="auth-input-group icon">
+              <i className="fas fa-phone"></i>
+              <input
+                type="tel"
+                name="phoneNumber"
+                placeholder="Số điện thoại (tùy chọn)"
+                value={formData.phoneNumber}
+                onChange={handleChange}
               />
             </div>
 
@@ -67,10 +131,11 @@ const Register = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="Mật khẩu bảo mật cao"
+                placeholder="Mật khẩu (tối thiểu 6 ký tự)"
                 value={formData.password}
                 onChange={handleChange}
                 required
+                minLength={6}
               />
             </div>
 
@@ -86,8 +151,26 @@ const Register = () => {
               />
             </div>
 
-            <button type="submit" className="auth-btn-register">
-              Đăng ký
+            {error && (
+              <div className="auth-error-message" style={{
+                color: '#ef4444',
+                backgroundColor: '#fee2e2',
+                padding: '0.75rem',
+                borderRadius: '8px',
+                marginBottom: '1rem',
+                fontSize: '0.875rem'
+              }}>
+                {error}
+              </div>
+            )}
+
+            <button 
+              type="submit" 
+              className="auth-btn-register"
+              disabled={loading}
+              style={{ opacity: loading ? 0.6 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
+            >
+              {loading ? 'Đang đăng ký...' : 'Đăng ký'}
             </button>
 
             <p className="auth-login-link">
