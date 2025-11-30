@@ -17,7 +17,27 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Đăng nhập:', formData);
-    navigate('/driver/profile');
+    
+    // Mock admin login - Kiểm tra credentials
+    const adminCredentials = {
+      email: 'admin@evcharge.vn',
+      password: '12345'
+    };
+    
+    if (formData.email === adminCredentials.email && formData.password === adminCredentials.password) {
+      // Lưu thông tin admin vào localStorage
+      localStorage.setItem('isAdmin', 'true');
+      localStorage.setItem('user', JSON.stringify({ 
+        email: adminCredentials.email, 
+        role: 'admin',
+        name: 'Quản trị viên'
+      }));
+      navigate('/admin');
+    } else {
+      // Đăng nhập user thông thường
+      localStorage.setItem('isAdmin', 'false');
+      navigate('/driver/profile');
+    }
   };
 
   return (
@@ -38,7 +58,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="admin@evstation.com"
+                placeholder="admin@evcharge.vn (Admin) hoặc email của bạn"
                 value={formData.email}
                 onChange={handleChange}
                 required
