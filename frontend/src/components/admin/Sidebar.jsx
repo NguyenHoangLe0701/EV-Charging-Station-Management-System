@@ -6,9 +6,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const menuItems = [
     { icon: 'fas fa-tachometer-alt', text: 'Tổng quan', path: '/admin' },
     { icon: 'fas fa-charging-station', text: 'Quản lý trạm', path: '/admin/stations' },
+    { icon: 'fas fa-plug', text: 'Phiên sạc', path: '/admin/sessions' },
     { icon: 'fas fa-users', text: 'Người dùng', path: '/admin/users' },
-    { icon: 'fas fa-chart-line', text: 'Doanh thu', path: '/admin/revenue' },
-    { icon: 'fas fa-tools', text: 'Bảo trì', path: '/admin/maintenance' },
+    { icon: 'fas fa-credit-card', text: 'Thanh toán', path: '/admin/payments' },
+    { icon: 'fas fa-box', text: 'Gói dịch vụ', path: '/admin/packages' },
+    { icon: 'fas fa-chart-line', text: 'Báo cáo', path: '/admin/reports' },
+    { icon: 'fas fa-dollar-sign', text: 'Doanh thu', path: '/admin/revenue' },
     { icon: 'fas fa-cog', text: 'Cài đặt', path: '/admin/settings' },
   ];
 
