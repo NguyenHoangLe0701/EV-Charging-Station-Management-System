@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../../../styles/UserProfile.css';
+import '../../../styles/UserProfile.css';
 
 function UserProfileScreen() {
     const navigate = useNavigate();
