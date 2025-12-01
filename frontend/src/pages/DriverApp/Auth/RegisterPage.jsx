@@ -131,26 +131,26 @@ const RegisterPage = () => {
                     )}
 
                     <div>
-                        <input type="text" value={username} onChange={handleInputChange(setUsername, setUsernameError)} className={`w-full px-4 py-3 border-2 rounded-lg ${usernameError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Tên đăng nhập" />
+                        <input type="text" value={username} onChange={handleInputChange(setUsername, setUsernameError)} className={`w-full px-4 py-3 border-2 rounded-lg ${usernameError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Tên đăng nhập" autoComplete="username" />
                         {usernameError && <p className="text-red-500 text-xs mt-1">{usernameError}</p>}
                     </div>
                     <div>
-                        <input type="email" value={email} onChange={handleInputChange(setEmail, setEmailError)} className={`w-full px-4 py-3 border-2 rounded-lg ${emailError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Email" />
+                        <input type="email" value={email} onChange={handleInputChange(setEmail, setEmailError)} className={`w-full px-4 py-3 border-2 rounded-lg ${emailError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Email" autoComplete="email" />
                         {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
                     </div>
                     <div className="flex gap-4">
-                        <input type="text" value={firstName} onChange={handleInputChange(setFirstName)} className="w-1/2 px-4 py-3 border-2 border-gray-300 rounded-lg" placeholder="Họ" />
-                        <input type="text" value={lastName} onChange={handleInputChange(setLastName)} className="w-1/2 px-4 py-3 border-2 border-gray-300 rounded-lg" placeholder="Tên" />
+                        <input type="text" value={firstName} onChange={handleInputChange(setFirstName)} className="w-1/2 px-4 py-3 border-2 border-gray-300 rounded-lg" placeholder="Họ" autoComplete="given-name" />
+                        <input type="text" value={lastName} onChange={handleInputChange(setLastName)} className="w-1/2 px-4 py-3 border-2 border-gray-300 rounded-lg" placeholder="Tên" autoComplete="family-name" />
                     </div>
                     <div className="relative">
-                        <input type={showPassword ? "text" : "password"} value={password} onChange={handleInputChange(setPassword, setPasswordError)} className={`w-full px-4 py-3 border-2 rounded-lg ${passwordError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Mật khẩu" />
+                        <input type={showPassword ? "text" : "password"} value={password} onChange={handleInputChange(setPassword, setPasswordError)} className={`w-full px-4 py-3 border-2 rounded-lg ${passwordError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Mật khẩu" autoComplete="new-password" />
                         <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={togglePasswordVisibility}>
                             <i className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"} text-gray-400`}></i>
                         </button>
                     </div>
                     {passwordError && <p className="text-red-500 text-xs -mt-2 mb-2">{passwordError}</p>}
                     <div className="relative">
-                        <input type={showConfirmPassword ? "text" : "password"} value={confirmPassword} onChange={handleInputChange(setConfirmPassword, setConfirmPasswordError)} className={`w-full px-4 py-3 border-2 rounded-lg ${confirmPasswordError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Xác nhận mật khẩu" />
+                        <input type={showConfirmPassword ? "text" : "password"} value={confirmPassword} onChange={handleInputChange(setConfirmPassword, setConfirmPasswordError)} className={`w-full px-4 py-3 border-2 rounded-lg ${confirmPasswordError ? 'border-red-500' : 'border-gray-300'}`} placeholder="Xác nhận mật khẩu" autoComplete="new-password" />
                         <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={toggleConfirmPasswordVisibility}>
                             <i className={`fas ${showConfirmPassword ? "fa-eye-slash" : "fa-eye"} text-gray-400`}></i>
                         </button>
