@@ -20,10 +20,8 @@ backend/
 │   └── reporting-service/
 ├── eureka-server/           # Service Discovery Server
 ├── config-server/           # Configuration Management Server
-└── database/                # Database scripts và schemas
-    ├── schemas/
-    ├── migrations/
-    └── seeds/
+└── database/                # MySQL user setup script
+    └── setup-user.sql
 ```
 
 ---
@@ -111,10 +109,10 @@ Thư viện dùng chung chứa:
 ---
 
 ### **database/**
-Chứa các scripts database:
-- **schemas/**: SQL scripts để tạo databases và cấu trúc cơ bản
-- **migrations/**: Database migration scripts (quản lý thay đổi schema)
-- **seeds/**: Seed data scripts (dữ liệu mẫu để test)
+Chứa script setup MySQL user chung cho tất cả services:
+- **setup-user.sql**: Script tạo user MySQL `evchargingstation` và cấp quyền cho tất cả databases
+
+**Lưu ý**: Trong kiến trúc Microservices, mỗi service tự quản lý database schema riêng thông qua JPA/Hibernate. Xem chi tiết trong `database/README.md`.
 
 ---
 
@@ -170,7 +168,7 @@ Mỗi service sử dụng database riêng biệt:
 ## 📚 Các Bước Tiếp Theo (Learning Path)
 
 ### **Phase 1: Setup & Cấu hình**
-- [ ] Setup MySQL và tạo databases (xem `database/schemas/`)
+- [ ] Setup MySQL user (chạy `database/setup-user.sql`)
 - [ ] Cấu hình kết nối database trong mỗi service
 - [ ] Build common-lib: `cd common-lib && mvn clean install`
 - [ ] Test khởi động từng service
