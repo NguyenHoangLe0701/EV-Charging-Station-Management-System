@@ -38,19 +38,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-pro">
-      {/* Hero Header */}
-      <div className="dashboard-hero">
-        <div className="hero-content">
-          <h1>Bảng Điều Khiển Trạm Sạc EV</h1>
-          <p>Quản lý thông minh - Tối ưu hiệu suất - Tăng trưởng bền vững</p>
-          <div className="hero-stats">
-            <span><i className="fas fa-bolt"></i> 1.420 kWh hôm nay</span>
-            <span><i className="fas fa-users"></i> 342 người dùng</span>
-          </div>
-        </div>
-        <div className="hero-bg"></div>
-      </div>
-
       {/* KPI Cards */}
       <div className="kpi-grid">
         <div className="kpi-card glass">
