@@ -3,7 +3,15 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const ProtectedRoute = ({ requiredRole = null }) => {
-    const { isAuthenticated } = useAuth();
+    const auth = useAuth();
+
+    // Safety check: Nếu AuthContext không được cung cấp
+    if (!auth) {
+        console.error('AuthContext is not provided. Make sure App is wrapped with AuthProvider.');
+        return <Navigate to="/login" replace />;
+    }
+
+    const { isAuthenticated } = auth;
 
     // Kiểm tra đăng nhập
     if (!isAuthenticated) {
