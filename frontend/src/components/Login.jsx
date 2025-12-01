@@ -81,6 +81,7 @@ const Login = () => {
                 placeholder="admin@evcharge.vn (Admin) hoặc email của bạn"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="email"
                 required
               />
             </div>
@@ -93,6 +94,7 @@ const Login = () => {
                 placeholder="Nhập mật khẩu"
                 value={formData.password}
                 onChange={handleChange}
+                autoComplete="current-password"
                 required
               />
             </div>
