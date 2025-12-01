@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // Cấu hình base URL - Thay đổi theo môi trường của bạn
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+// Tạm thời dùng direct service (port 8081) vì Gateway chưa chạy
+// Sau khi khởi động Gateway, đổi lại thành: 'http://localhost:8080/api'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081/api';
 
 // Tạo axios instance với config mặc định
 const authApi = axios.create({
