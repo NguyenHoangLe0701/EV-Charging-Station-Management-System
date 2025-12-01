@@ -2,15 +2,37 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ({ requiredRole = null }) => {
     const { isAuthenticated } = useAuth();
 
+    // Kiểm tra đăng nhập
     if (!isAuthenticated) {
-        // Nếu chưa đăng nhập, chuyển hướng về trang login
         return <Navigate to="/login" replace />;
     }
 
-    // Nếu đã đăng nhập, cho phép truy cập vào trang con (component con)
+    // Kiểm tra role nếu có yêu cầu
+    if (requiredRole) {
+        try {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                const userRole = user.role?.toUpperCase() || 'USER';
+                const requiredRoles = Array.isArray(requiredRole) ? requiredRole : [requiredRole];
+                
+                if (!requiredRoles.includes(userRole)) {
+                    // Nếu không có quyền, redirect về trang phù hợp
+                    if (userRole === 'ADMIN' || userRole === 'MANAGER') {
+                        return <Navigate to="/admin" replace />;
+                    }
+                    return <Navigate to="/driver/profile" replace />;
+                }
+            }
+        } catch (error) {
+            console.error('Error checking role:', error);
+            return <Navigate to="/login" replace />;
+        }
+    }
+
     return <Outlet />;
 };
 
