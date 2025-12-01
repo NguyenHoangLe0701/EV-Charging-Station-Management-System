@@ -120,6 +120,7 @@ const LoginPage = () => {
                                 setUsernameInput(e.target.value);
                                 if (usernameError) setUsernameError("");
                             }}
+                            autoComplete="username"
                         />
                         {usernameError && (
                             <p className="text-red-500 text-xs italic mt-1">{usernameError}</p>
@@ -142,6 +143,7 @@ const LoginPage = () => {
                                     setPasswordInput(e.target.value);
                                     if (passwordError) setPasswordError("");
                                 }}
+                                autoComplete="current-password"
                             />
                             <button
                                 type="button"
