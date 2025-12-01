@@ -1,9 +1,9 @@
 package com.authservice.util;
 
+import com.authservice.config.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -15,14 +15,22 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtil {
-    @Value("${jwt.secret}")
-    private String secret;
+    private final JwtProperties jwtProperties;
 
-    @Value("${jwt.expiration}")
-    private Long expiration;
+    public JwtUtil(JwtProperties jwtProperties) {
+        this.jwtProperties = jwtProperties;
+    }
+
+    private String getSecret() {
+        return jwtProperties.getSecret();
+    }
+
+    private Long getExpiration() {
+        return jwtProperties.getExpiration();
+    }
 
     private SecretKey getSigningKey() {
-        return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        return Keys.hmacShaKeyFor(getSecret().getBytes(StandardCharsets.UTF_8));
     }
 
     public String extractUsername(String token) {
@@ -62,7 +70,7 @@ public class JwtUtil {
                 .claims(claims)
                 .subject(subject)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + expiration))
+                .expiration(new Date(System.currentTimeMillis() + getExpiration()))
                 .signWith(getSigningKey())
                 .compact();
     }
