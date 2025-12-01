@@ -81,6 +81,13 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- DotEnv - Load .env file automatically -->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
         <!-- Eureka Client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
