@@ -99,6 +99,7 @@ const Register = () => {
                 placeholder="Họ và tên"
                 value={formData.name}
                 onChange={handleChange}
+                autoComplete="name"
                 required
               />
             </div>
@@ -111,6 +112,7 @@ const Register = () => {
                 placeholder="Email của bạn"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="email"
                 required
               />
             </div>
@@ -123,6 +125,7 @@ const Register = () => {
                 placeholder="Số điện thoại (tùy chọn)"
                 value={formData.phoneNumber}
                 onChange={handleChange}
+                autoComplete="tel"
               />
             </div>
 
@@ -134,6 +137,7 @@ const Register = () => {
                 placeholder="Mật khẩu (tối thiểu 6 ký tự)"
                 value={formData.password}
                 onChange={handleChange}
+                autoComplete="new-password"
                 required
                 minLength={6}
               />
@@ -147,6 +151,7 @@ const Register = () => {
                 placeholder="Nhập lại mật khẩu"
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                autoComplete="new-password"
                 required
               />
             </div>
