@@ -384,10 +384,50 @@ label {
 }
 
 @media (max-width: 768px) {
+  .payment-hero {
+    padding: 2rem 1rem;
+  }
   .payment-hero h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+  .payment-hero .subtitle {
+    font-size: 0.9rem;
+  }
+  .secure-badges {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .payment-content {
+    padding: 1.5rem 1rem;
   }
   .form-row {
     grid-template-columns: 1fr;
+  }
+  .plan-selection {
+    gap: 1rem;
+  }
+  .plan-card {
+    padding: 1.5rem 1rem;
+  }
+  .payment-form-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-hero h1 {
+    font-size: 1.5rem;
+  }
+  .plan-card h3 {
+    font-size: 1.1rem;
+  }
+  .plan-card .price .amount {
+    font-size: 1.5rem;
+  }
+  .methods {
+    flex-direction: column;
+  }
+  .method {
+    width: 100%;
   }
 }
