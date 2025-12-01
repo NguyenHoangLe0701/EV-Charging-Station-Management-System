@@ -35,8 +35,10 @@ function AppRouter() {
           <Route path="/driver/profile" element={<UserProfileScreen />} />
         </Route>
 
-        {/* Admin */}
-        <Route path="/admin/*" element={<AdminPage />} />
+        {/* Admin - Protected with ADMIN/MANAGER role */}
+        <Route element={<ProtectedRoute requiredRole={['ADMIN', 'MANAGER', 'OPERATOR']} />}>
+          <Route path="/admin/*" element={<AdminPage />} />
+        </Route>
 
         {/* 404 */}
         <Route path="*" element={<h1>404 - Trang không tồn tại</h1>} />
