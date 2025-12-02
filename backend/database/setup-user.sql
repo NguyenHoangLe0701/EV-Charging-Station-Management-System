@@ -12,6 +12,8 @@ GRANT ALL PRIVILEGES ON ev_charging_session.* TO 'evchargingstation'@'localhost'
 GRANT ALL PRIVILEGES ON ev_charging_payment.* TO 'evchargingstation'@'localhost';
 GRANT ALL PRIVILEGES ON ev_charging_notification.* TO 'evchargingstation'@'localhost';
 GRANT ALL PRIVILEGES ON ev_charging_reporting.* TO 'evchargingstation'@'localhost';
+GRANT ALL PRIVILEGES ON ev_charging_partner.* TO 'evchargingstation'@'localhost';
+GRANT ALL PRIVILEGES ON ev_charging_settlement.* TO 'evchargingstation'@'localhost';
 
 -- Cấp quyền tạo database (nếu chưa tồn tại)
 GRANT CREATE ON *.* TO 'evchargingstation'@'localhost';
