@@ -52,6 +52,8 @@ Thư viện dùng chung chứa:
 - `http://localhost:8080/api/payments/**` → payment-service
 - `http://localhost:8080/api/notifications/**` → notification-service
 - `http://localhost:8080/api/reports/**` → reporting-service
+- `http://localhost:8080/api/partners/**` → partner-service
+- `http://localhost:8080/api/settlements/**` → settlement-service
 
 ---
 
@@ -91,6 +93,24 @@ Thư viện dùng chung chứa:
   - Phân tích xu hướng sử dụng hệ thống
 - **Database**: `ev_charging_reporting`
 - **Dependencies**: OpenFeign (giao tiếp với charging-service, payment-service, station-service)
+
+#### 8. **partner-service** (Port: 8088) - B2B
+- **Chức năng**: Quản lý đối tác B2B (Chủ trạm sạc)
+  - Đăng ký và quản lý đối tác
+  - Quản lý hợp đồng và chính sách chia sẻ doanh thu
+  - Quản lý trạm sạc của đối tác
+- **Database**: `ev_charging_partner`
+- **Dependencies**: OpenFeign (giao tiếp với station-service, payment-service)
+
+#### 9. **settlement-service** (Port: 8089) - B2B
+- **Chức năng**: Thanh toán cho đối tác (Settlement)
+  - Tính toán doanh thu cho đối tác
+  - Tạo hóa đơn thanh toán
+  - Quản lý lịch sử thanh toán
+  - Tự động hóa quy trình settlement
+- **Database**: `ev_charging_settlement`
+- **Dependencies**: OpenFeign (giao tiếp với partner-service, payment-service)
+- **Scheduling**: Sử dụng @EnableScheduling cho tự động tính toán định kỳ
 
 ---
 
