@@ -35,6 +35,18 @@ spring:
           uri: lb://reporting-service
           predicates:
             - Path=/api/reports/**
+        - id: partner-service
+          uri: lb://partner-service
+          predicates:
+            - Path=/api/partners/**
+        - id: settlement-service
+          uri: lb://settlement-service
+          predicates:
+            - Path=/api/settlements/**
+        - id: dashboard-service
+          uri: lb://reporting-service
+          predicates:
+            - Path=/api/dashboard/**
 
 eureka:
   client:
