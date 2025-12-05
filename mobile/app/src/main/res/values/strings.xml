@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EV Charging</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_map">Bản đồ</string>
+    <string name="nav_sessions">Phiên sạc</string>
+    <string name="nav_profile">Hồ sơ</string>
+    
+    <!-- Auth -->
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="full_name">Họ tên</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="login_success">Đăng nhập thành công</string>
+    <string name="login_failed">Đăng nhập thất bại</string>
+    
+    <!-- Common -->
+    <string name="loading">Đang tải...</string>
+    <string name="error">Lỗi</string>
+    <string name="retry">Thử lại</string>
+    <string name="cancel">Hủy</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="edit">Chỉnh sửa</string>
+    
+    <!-- Stations -->
+    <string name="nearby_stations">Trạm gần đây</string>
+    <string name="station_details">Chi tiết trạm</string>
+    <string name="available_ports">Cổng sạc có sẵn</string>
+    <string name="start_charging">Bắt đầu sạc</string>
+    
+    <!-- Sessions -->
+    <string name="active_session">Phiên sạc đang diễn ra</string>
+    <string name="session_history">Lịch sử sạc</string>
+    <string name="stop_charging">Dừng sạc</string>
+    
+    <!-- Profile -->
+    <string name="profile">Hồ sơ</string>
+    <string name="settings">Cài đặt</string>
+    <string name="logout">Đăng xuất</string>
+    
+    <!-- Maps -->
+    <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
+</resources>
+
